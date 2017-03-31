@@ -1,5 +1,7 @@
 module EstudiarEspanol
-  class Tener < Verbo
-    FORMA = %w[ tengo tienes tiene tenemos teneis tienen ]
+  module Verbo
+    class Tener < VerboBase
+      CONJUGACION = %w[ tengo tienes tiene tenemos teneis tienen ]
+    end
   end
 end
