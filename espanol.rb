@@ -1,5 +1,6 @@
 module EstudiarEspanol
   [
+    "./impresion.rb",
     "./verbos/verbo_base.rb"
   ].each { |file| require file }
 
