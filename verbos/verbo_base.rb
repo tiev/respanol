@@ -1,7 +1,8 @@
 module EstudiarEspanol
   module Verbo
     class VerboBase
-      include ::EstudiarEspanol::Impresion
+      include ::EstudiarEspanol::Impresion,
+        ::EstudiarEspanol::Traducir
 
       CONJUGACION = []
 

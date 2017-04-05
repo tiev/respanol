@@ -22,7 +22,8 @@ module ::Guard
     end
 
     def start
-      require './espanol.rb'
+      p = "#{File.dirname(__FILE__)}/espanol.rb"
+      autoload(:EstudiarEspanol, p)
     end
 
     def stop
@@ -33,7 +34,6 @@ module ::Guard
     end
 
     def run_all
-      start
     end
 
     def run_on_additions(paths)
@@ -51,5 +51,5 @@ module ::Guard
 end
 
 guard :espanol do
-  watch(%r{(.*)\.rb}) { |m| "#{m[1]}" }
+  watch(%r{(.*)\.rb}) { |m| "#{m[1]}.rb" }
 end
