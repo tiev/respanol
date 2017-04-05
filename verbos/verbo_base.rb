@@ -5,7 +5,7 @@ module EstudiarEspanol
 
       CONJUGACION = []
 
-      def self.aleatorio(klase = nil)
+      def self.conjugado(klase = nil)
         klases = Array(klase)
         klases << self if klases.empty?
 

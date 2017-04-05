@@ -16,7 +16,7 @@ module EstudiarEspanol
       end
     end
 
-    def self.hablar
+    def self.escribir
       indices = (0..(MESES.size - 1)).to_a
       while true
         indice = indices.sample
