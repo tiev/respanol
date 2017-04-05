@@ -22,8 +22,7 @@ module ::Guard
     end
 
     def start
-      p = "#{File.dirname(__FILE__)}/espanol.rb"
-      autoload(:EstudiarEspanol, p)
+      load './espanol.rb'
     end
 
     def stop
@@ -53,3 +52,15 @@ end
 guard :espanol do
   watch(%r{(.*)\.rb}) { |m| "#{m[1]}.rb" }
 end
+
+#guard :bundler do
+#  require 'guard/bundler'
+#  require 'guard/bundler/verify'
+#  helper = Guard::Bundler::Verify.new
+
+#  files = ['Gemfile']
+#  files += Dir['*.gemspec'] if files.any? { |f| helper.uses_gemspec?(f) }
+
+#  # Assume files are symlinked from somewhere
+#  files.each { |file| watch(helper.real_path(file)) }
+#end
