@@ -73,7 +73,7 @@ module EstudiarEspanol
         DECENA[ultimo]
       else
         s = "#{DECENAS[ultimos_2 / 10]}"
-        s = s + "#{' y ' if num >= 10}#{UNIDADES[ultimo]}" if ultimo > 0
+        s = s + "#{' y ' if (ultimos_2 / 10 >= 3)}#{UNIDADES[ultimo]}" if ultimo > 0
         s
       end
     end

@@ -12,7 +12,7 @@ module EstudiarEspanol
         print ":#{c} "
         yield(new(c))
       end.select { |r| r != false }.count
-      puts "Exito: #{res}. En #{(Time.now - comienzo).round} segundos!"
+      puts "Exito: #{res} / #{conde}. En #{(Time.now - comienzo).round} segundos!"
 
       res
     end
