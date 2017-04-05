@@ -5,7 +5,7 @@ module EstudiarEspanol
     UNIDADES = %w( cero uno dos tres cuatro cinco seis siete ocho nueve )
     DECENA = %w( diez once doce trece catorce quince dieciseis diecisiete dieciocho diecinueve )
     DECENAS = %W( #{''} diez viente treinta cuarenta cincuenta sesenta setenta ochenta noventa )
-    CENTENARES = %W( #{''} ciento doscientos trescrientos cuatrocientos quinientos seiscientos setecientos ochocientos novecientos )
+    CENTENARES = %W( #{''} ciento doscientos trescientos cuatrocientos quinientos seiscientos setecientos ochocientos novecientos )
     UNIDAD_1K = 'mil'
     UNIDAD_1M = 'un millon'
     DECIMAL = 'coma'
@@ -41,6 +41,8 @@ module EstudiarEspanol
       if num >= 1000
         mil = (num % 1_000_000) / 1000
         s_mil = case mil
+                when 0
+                  ''
                 when 1
                   'mil'
                 else
@@ -77,8 +79,9 @@ module EstudiarEspanol
     end
 
     def self.tres_ultimos_en_palabras(num)
+      s_ultimos_2 = dos_ultimos_en_palabras(num)
       s_centenar = CENTENARES[(num % 1000) / 100] if num >= 100
-      [s_centenar, unirse_palabras(dos_ultimos_en_palabras(num))]
+      [s_centenar, s_ultimos_2.empty? ? '' : 'y', s_ultimos_2]
     end
   end
 end
