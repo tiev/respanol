@@ -81,7 +81,7 @@ module EstudiarEspanol
     def self.tres_ultimos_en_palabras(num)
       s_ultimos_2 = dos_ultimos_en_palabras(num)
       s_centenar = CENTENARES[(num % 1000) / 100] if num >= 100
-      [s_centenar, s_ultimos_2.empty? ? '' : 'y', s_ultimos_2]
+      [s_centenar, (s_centenar.nil? || s_ultimos_2.empty?) ? '' : 'y', s_ultimos_2]
     end
   end
 end
