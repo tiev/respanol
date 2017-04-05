@@ -1,3 +1,5 @@
+require 'readline'
+
 module EstudiarEspanol
   module Impresion
     module ClassMethods
@@ -8,35 +10,17 @@ module EstudiarEspanol
         @__impresion_contar += 1
       end
 
+      def reajustar_impresion
+        @__impresion_contar = 0
+      end
+
+      def prefijo(contar = false)
+        print "#{self.name.split('::').last}::#{" :#{__impresion_contar}" if contar} "
+      end
+
       def impresion(*args)
-        print "#{self.name.split('::').last} :#{__impresion_contar} > "
+        prefijo
         print(*args)
-      end
-
-      def optener
-        $stdin.gets.chomp
-      end
-
-      def pedir(*args)
-        impresion(*args)
-        optener
-      end
-
-      def decir_que_no
-        puts " => No!"
-      end
-
-      def felicitar
-        puts " => Muy bien!"
-      end
-
-      def ensayar(*args)
-        impresion(*args)
-        loop do
-          break if yield(optener)
-          decir_que_no
-        end
-        felicitar
       end
     end
 

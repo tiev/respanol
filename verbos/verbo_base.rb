@@ -6,14 +6,15 @@ module EstudiarEspanol
 
       CONJUGACION = []
 
-      def self.conjugado(klase = nil)
+      def self.conjugado(klase = nil, conde = nil)
         klases = Array(klase)
         klases << self if klases.empty?
 
-        while true
+        Test.gaza(*[conde].compact) do |t|
           klase = klases.sample
           pro = Pronombre.todos.sample
-          klase.ensayar("#{pro} ") do |v|
+          klase.prefijo
+          t.ensayar("#{pro} ") do |v|
             klase::CONJUGACION.find_index(v) == Pronombre.verbo_indice(pro)
           end
         end

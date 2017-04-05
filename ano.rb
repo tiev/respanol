@@ -7,18 +7,18 @@ module EstudiarEspanol
       Julio Agosto Septiembre Octubre Noviembre Diciembre
     }
 
-    def self.leer
-      while true
+    def self.leer(conde = nil)
+      Test.gaza(*[conde].compact) do |t|
         mes = MESES.sample
-        ensayar("#{mes} indice in Vietnam es ") do |v|
+        t.ensayar("#{mes} indice in Vietnamita es ") do |v|
           v.to_i == (MESES.find_index(mes) + 1)
         end
       end
     end
 
-    def self.escribir
+    def self.escribir(conde = nil)
       indices = (0..(MESES.size - 1)).to_a
-      while true
+      Test.gaza(*[conde].compact) do |t|
         indice = indices.sample
         ensayar("Mes indice #{indice + 1} es ") do |v|
           MESES[indice].downcase == v.downcase
