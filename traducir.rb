@@ -5,13 +5,13 @@ module EstudiarEspanol
         nombre = self.name.split('::').last.downcase
         @definicion ||= Traductor.traducir_y_definicion(nombre)
 
-        tpl = "| %s"
+        tpl = " | %s"
         o = ["=> #{@definicion[:translated]}"]
-        o << "*---INGLÉS----------"
+        o << " *---INGLÉS----------"
         @definicion[:target_definitions].each do |d|
           o << tpl % d
         end
-        o << "*---ESPAÑOL----------"
+        o << " *---ESPAÑOL----------"
         @definicion[:source_definitions].each do |d|
           o << tpl % d
         end
