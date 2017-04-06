@@ -6,10 +6,15 @@ module EstudiarEspanol
     DECENA = %w( diez once doce trece catorce quince dieciseis diecisiete dieciocho diecinueve )
     DECENAS = %W( #{''} diez viente treinta cuarenta cincuenta sesenta setenta ochenta noventa )
     CENTENARES = %W( #{''} ciento doscientos trescientos cuatrocientos quinientos seiscientos setecientos ochocientos novecientos )
+    UNO_APOCOPE = 'un'
     UNIDAD_1K = 'mil'
-    UNIDAD_1M = 'un millon'
+    UNIDAD_1M = 'millon'
     DECIMAL = 'coma'
     MAXIMO = 100
+
+    def self.feminino
+      FemininoNumero
+    end
 
     def self.leer(rango = (1...MAXIMO), conde = nil)
       Test.gaza(*[conde].compact) do |t|
@@ -34,7 +39,7 @@ module EstudiarEspanol
     end
 
     def self.numero_en_palabras(num)
-      return UNIDADES[0] if num == 0
+      return self::UNIDADES[0] if num == 0
 
       s_ultimos_3 = unirse_palabras(tres_ultimos_en_palabras(num))
 
@@ -44,9 +49,9 @@ module EstudiarEspanol
                 when 0
                   ''
                 when 1
-                  'mil'
+                  UNIDAD_1K
                 else
-                  "#{unirse_palabras(tres_ultimos_en_palabras(mil, false))} mil"
+                  "#{unirse_palabras(tres_ultimos_en_palabras(mil, false))} #{UNIDAD_1K}"
                 end
       end
 
@@ -54,7 +59,7 @@ module EstudiarEspanol
         millon = (num % 1_000_000_000) / 1_000_000
         s_millon = case millon
         when 1
-          'un millon'
+          "#{self::UNO_APOCOPE} #{UNIDAD_1M}"
         else
           "#{unirse_palabras(tres_ultimos_en_palabras(millon, false))} millones"
         end
@@ -79,16 +84,24 @@ module EstudiarEspanol
     end
 
     def self.tres_ultimos_en_palabras(num, es_unidad = true)
+      return 'cien' if (num % 1000) == 100
+
       s_ultimos_2 = dos_ultimos_en_palabras(num, es_unidad)
-      s_centenar = CENTENARES[(num % 1000) / 100] if num >= 100
+      s_centenar = self::CENTENARES[(num % 1000) / 100] if num >= 100
       [s_centenar, s_ultimos_2]
     end
 
     def self.unidad(num, es_unidad = true)
       ultimo = num % 10
-      return 'un' if !es_unidad && ultimo == 1
+      return self::UNO_APOCOPE if !es_unidad && ultimo == 1
 
-      UNIDADES[ultimo]
+      self::UNIDADES[ultimo]
     end
+  end
+
+  class FemininoNumero < Numero
+    UNIDADES = %w( cero una dos tres cuatro cinco seis siete ocho nueve )
+    CENTENARES = %W( #{''} ciento doscientas trescientas cuatrocientas quinientas seiscientas setecientas ochocientas novecientas )
+    UNO_APOCOPE = 'una'
   end
 end
