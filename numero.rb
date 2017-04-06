@@ -46,7 +46,7 @@ module EstudiarEspanol
                 when 1
                   'mil'
                 else
-                  "#{unirse_palabras(tres_ultimos_en_palabras(mil))} mil"
+                  "#{unirse_palabras(tres_ultimos_en_palabras(mil, false))} mil"
                 end
       end
 
@@ -56,32 +56,39 @@ module EstudiarEspanol
         when 1
           'un millon'
         else
-          "#{unirse_palabras(tres_ultimos_en_palabras(millon))} millones"
+          "#{unirse_palabras(tres_ultimos_en_palabras(millon, false))} millones"
         end
       end
 
       unirse_palabras([s_millon, s_mil, s_ultimos_3])
     end
 
-    def self.dos_ultimos_en_palabras(num)
+    def self.dos_ultimos_en_palabras(num, es_unidad = true)
       ultimos_2 = num % 100
       ultimo = ultimos_2 % 10
       case ultimos_2 / 10
       when 2
-        ultimo == 0 ? DECENAS[2] : "vienti#{UNIDADES[ultimo]}"
+        ultimo == 0 ? DECENAS[2] : "vienti#{unidad(ultimo, es_unidad)}"
       when 1
         DECENA[ultimo]
       else
         s = "#{DECENAS[ultimos_2 / 10]}"
-        s = s + "#{' y ' if (ultimos_2 / 10 >= 3)}#{UNIDADES[ultimo]}" if ultimo > 0
+        s = s + "#{' y ' if (ultimos_2 / 10 >= 3)}#{unidad(ultimo, es_unidad)}" if ultimo > 0
         s
       end
     end
 
-    def self.tres_ultimos_en_palabras(num)
-      s_ultimos_2 = dos_ultimos_en_palabras(num)
+    def self.tres_ultimos_en_palabras(num, es_unidad = true)
+      s_ultimos_2 = dos_ultimos_en_palabras(num, es_unidad)
       s_centenar = CENTENARES[(num % 1000) / 100] if num >= 100
-      [s_centenar, (s_centenar.nil? || s_ultimos_2.empty?) ? '' : 'y', s_ultimos_2]
+      [s_centenar, s_ultimos_2]
+    end
+
+    def self.unidad(num, es_unidad = true)
+      ultimo = num % 10
+      return 'un' if !es_unidad && ultimo == 1
+
+      UNIDADES[ultimo]
     end
   end
 end
