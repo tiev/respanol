@@ -22,18 +22,13 @@ module ::Guard
     end
 
     def start
-      load './espanol.rb'
-    end
-
-    def stop
+      require './espanol.rb'
     end
 
     def reload
+      #Object.send(:remove_const, :EstudiarEspanol)
       load './espanol.rb'
-      'Espanol Reloaded'
-    end
-
-    def run_all
+      puts 'Espanol Reloaded'
     end
 
     def run_on_additions(paths)

@@ -7,6 +7,7 @@ module EstudiarEspanol
     DECENAS = %W( #{''} diez viente treinta cuarenta cincuenta sesenta setenta ochenta noventa )
     CENTENARES = %W( #{''} ciento doscientos trescientos cuatrocientos quinientos seiscientos setecientos ochocientos novecientos )
     UNO_APOCOPE = 'un'
+    MILLONS = %W( #{''} millon billon trillon cuatrillon quintillon sextillon septillon octillon nonillon decillon undecillon duodecillon tredecillon cuatordecillon quindecillon sexdecillon septendecillon octodecillon novendecillon vigintillon )
     UNIDAD_1K = 'mil'
     UNIDAD_1M = 'millon'
     DECIMAL = 'coma'
@@ -34,14 +35,40 @@ module EstudiarEspanol
       end
     end
 
-    def self.unirse_palabras(ps)
-      ps.join(' ').gsub(/\s+/, ' ').strip
+    def self.unirse_palabras(*ps)
+      ps.flatten.join(' ').gsub(/\s+/, ' ').strip
     end
 
-    def self.numero_en_palabras(num)
-      return self::UNIDADES[0] if num == 0
+    def self.numero_en_palabras(numero)
+      return self::UNIDADES[0] if numero == 0
 
-      s_ultimos_3 = unirse_palabras(tres_ultimos_en_palabras(num))
+      num = numero
+      millons = []
+      s_millons = []
+      es_unidad = true
+      i_millon = 0
+      loop do
+        # Obteno el millone
+        millon = num % 1_000_000
+        millons.push millon
+        # Escribo el millone
+        s_millons.push("#{MILLONS[i_millon]}#{'es' if millon > 1}") if !es_unidad && millon >= 1
+        s_millons.push millon_en_palabras(millon, es_unidad)
+        # Preparo a continuacion
+        es_unidad = false
+        i_millon += 1
+        num = num / 1_000_000
+
+        break if num == 0
+      end
+
+      unirse_palabras(s_millons.reverse)
+    end
+
+    def self.millon_en_palabras(numero, es_unidad = true)
+      num = numero % 1_000_000
+
+      s_ultimos_3 = tres_ultimos_en_palabras(num, es_unidad)
 
       if num >= 1000
         mil = (num % 1_000_000) / 1000
@@ -51,21 +78,11 @@ module EstudiarEspanol
                 when 1
                   UNIDAD_1K
                 else
-                  "#{unirse_palabras(tres_ultimos_en_palabras(mil, false))} #{UNIDAD_1K}"
+                  "#{tres_ultimos_en_palabras(mil, false)} #{UNIDAD_1K}"
                 end
       end
 
-      if num >= 1_000_000
-        millon = (num % 1_000_000_000) / 1_000_000
-        s_millon = case millon
-        when 1
-          "#{self::UNO_APOCOPE} #{UNIDAD_1M}"
-        else
-          "#{unirse_palabras(tres_ultimos_en_palabras(millon, false))} millones"
-        end
-      end
-
-      unirse_palabras([s_millon, s_mil, s_ultimos_3])
+      unirse_palabras(s_mil, s_ultimos_3)
     end
 
     def self.dos_ultimos_en_palabras(num, es_unidad = true)
@@ -88,7 +105,7 @@ module EstudiarEspanol
 
       s_ultimos_2 = dos_ultimos_en_palabras(num, es_unidad)
       s_centenar = self::CENTENARES[(num % 1000) / 100] if num >= 100
-      [s_centenar, s_ultimos_2]
+      unirse_palabras(s_centenar, s_ultimos_2)
     end
 
     def self.unidad(num, es_unidad = true)
