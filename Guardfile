@@ -28,15 +28,21 @@ module ::Guard
     def reload
       #Object.send(:remove_const, :EstudiarEspanol)
       load './espanol.rb'
-      puts 'Espanol Reloaded'
+      Guard::UI.info 'Espanol Reloaded'
     end
 
     def run_on_additions(paths)
-      paths.each { |p| load p }
+      paths.each do |p|
+        load p
+        Guard::UI.info "Loaded #{p}"
+      end
     end
 
     def run_on_modifications(paths)
-      paths.each { |p| load p }
+      paths.each do |p|
+        load p
+        Guard::UI.info "Loaded #{p}"
+      end
     end
 
     def run_on_removals(paths)
