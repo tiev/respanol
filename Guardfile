@@ -30,6 +30,7 @@ module ::Guard
 
     def reload
       load './espanol.rb'
+      'Espanol Reloaded'
     end
 
     def run_all

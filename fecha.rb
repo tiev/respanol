@@ -15,7 +15,7 @@ module EstudiarEspanol
     def self.escribir(fecha_rango = (Date.civil(1900,1,1)..Date.today), conde = nil)
       Test.gaza(*[conde].compact) do |t|
         fe = rand(fecha_rango)
-        t.ensayar("Fecha #{ingles_dia(fe)} #{fe.to_s}: ") do |v|
+        t.ensayar("Fecha #{fe.strftime('%A %Y-%m-%d')}: ") do |v|
           v.gsub(/\s+/, ' ').strip.downcase == fecha_en_palabras(fe).downcase
         end
       end
@@ -28,11 +28,6 @@ module EstudiarEspanol
       ano = Numero.numero_en_palabras(fecha.year)
 
       [dia, fecha_numero, 'de', mes, 'de', ano].join(' ')
-    end
-
-    def self.ingles_dia(fecha)
-      dias = %w{ Sunday Monday Tuesday Wednesday Thursday Friday Saturday }
-      dias[fecha.wday]
     end
   end
 end
