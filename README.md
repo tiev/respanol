@@ -1,4 +1,4 @@
-# estudiar_espanol
+# Respanol
 Some ruby scripts to help learning Espanol.
 These scripts are developed while I started studying Spanish.
 
