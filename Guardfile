@@ -22,13 +22,13 @@ module ::Guard
     end
 
     def start
-      require './espanol.rb'
+      require 'respanol'
     end
 
     def reload
       #Object.send(:remove_const, :EstudiarEspanol)
-      load './espanol.rb'
-      Guard::UI.info 'Espanol Reloaded'
+      load './lib/respanol.rb'
+      Guard::UI.info 'REspanol Reloaded'
     end
 
     def run_on_additions(paths)
@@ -55,14 +55,14 @@ guard :espanol do
   watch(%r{(.*)\.rb}) { |m| "#{m[1]}.rb" }
 end
 
-#guard :bundler do
-#  require 'guard/bundler'
-#  require 'guard/bundler/verify'
-#  helper = Guard::Bundler::Verify.new
+guard :bundler do
+  require 'guard/bundler'
+  require 'guard/bundler/verify'
+  helper = Guard::Bundler::Verify.new
 
-#  files = ['Gemfile']
-#  files += Dir['*.gemspec'] if files.any? { |f| helper.uses_gemspec?(f) }
+  files = ['Gemfile']
+  files += Dir['*.gemspec'] if files.any? { |f| helper.uses_gemspec?(f) }
 
-#  # Assume files are symlinked from somewhere
-#  files.each { |file| watch(helper.real_path(file)) }
-#end
+  # Assume files are symlinked from somewhere
+  files.each { |file| watch(helper.real_path(file)) }
+end

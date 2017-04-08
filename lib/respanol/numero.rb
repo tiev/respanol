@@ -1,4 +1,4 @@
-module EstudiarEspanol
+module Respanol
   class Numero
     include Impresion
 

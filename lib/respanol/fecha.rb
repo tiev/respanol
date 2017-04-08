@@ -1,4 +1,4 @@
-module EstudiarEspanol
+module Respanol
   class Fecha
     def self.leer(fecha_rango = (Date.civil(1900,1,1)..Date.today), conde = nil)
       Test.gaza(*[conde].compact) do |t|

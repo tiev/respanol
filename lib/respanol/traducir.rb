@@ -1,4 +1,4 @@
-module EstudiarEspanol
+module Respanol
   module Traducir
     module ClassMethods
       def definicion

@@ -1,6 +1,4 @@
-require 'glosbe'
-
-module EstudiarEspanol
+module Respanol
   class Traductor
     def self.traductor
       @traductor ||= Glosbe::Translate.new('es', 'en')

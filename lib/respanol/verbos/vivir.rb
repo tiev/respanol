@@ -1,4 +1,4 @@
-module EstudiarEspanol
+module Respanol
   module Verbo
     class Vivir < VerboBase
       CONJUGACION = %w{ vivo vives vive vivimos vivis viven }

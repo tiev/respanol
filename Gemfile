@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
+gemspec
 
-gem 'guard'
-gem 'guard-bundler'
 gem 'glosbe'
-#gem 'spirit_hands'
+
+group :development do
+  gem 'guard'
+  gem 'guard-bundler'
+end

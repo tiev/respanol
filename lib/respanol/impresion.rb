@@ -1,6 +1,4 @@
-require 'readline'
-
-module EstudiarEspanol
+module Respanol
   module Impresion
     module ClassMethods
       attr_reader :impresion_contar

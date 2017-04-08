@@ -1,4 +1,4 @@
-module EstudiarEspanol
+module Respanol
   module Verbo
     class Jugar < VerboBase
       CONJUGACION = %w{ juego juegas juega jugamos jugais juegan }

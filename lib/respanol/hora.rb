@@ -1,4 +1,4 @@
-module EstudiarEspanol
+module Respanol
   class Hora
     def self.leer(from = 0, to = 24, conde = nil)
       Test.gaza(*[conde].compact) do |t|

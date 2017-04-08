@@ -1,4 +1,4 @@
-module EstudiarEspanol
+module Respanol
   class Semana
     include Impresion
 

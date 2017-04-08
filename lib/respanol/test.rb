@@ -1,6 +1,6 @@
-module EstudiarEspanol
+module Respanol
   class Test
-    include Impresion
+    include ::Respanol::Impresion
 
     GAZA_CONDE = 50
 
