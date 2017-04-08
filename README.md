@@ -14,8 +14,8 @@ These scripts test your Espanol knownledge in many aspects:
 * Verb Conjugations
 
 # How to run
-You should have install Ruby. Then bundle to install gems `bundle install`.
+You should have installed Ruby. Then bundle to install gems `bundle install`.
 
-Then include library in irb: `irb -r ./espanol.rb`. Enjoy studying!!!
+Then include library in irb: `irb -I lib -r espanol`. Enjoy studying!!!
 
 I will published this as a gem when I feel it's ready.
