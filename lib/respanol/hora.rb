@@ -1,29 +1,5 @@
 module Respanol
   class Hora
-    def self.leer(from = 0, to = 24, conde = nil)
-      Test.gaza(*[conde].compact) do |t|
-        fe = Date.today
-        ho = Time.local(fe.year, fe.month, fe.day, rand(from..to), rand(0..60), rand(0..60))
-        t.ensayar("#{responder_hora_en_palabras(ho)} = ") do |v|
-          m = /(\d+)[^\d]+(\d+)/.match(v)
-          if m
-            m[1].to_i == (ho.hour % 12) && m[2].to_i == ho.min
-          end
-        end
-      end
-    end
-
-    def self.escribir(from = 0, to = 24, conde = nil)
-      Test.gaza(*[conde].compact) do |t|
-        fe = Date.today
-        ho = Time.local(fe.year, fe.month, fe.day, rand(from..to), rand(0..60), rand(0..60))
-        t.ensayar("#{ho.strftime('%I:%M:%S %p')} = ") do |v|
-          v.gsub(/\s+/, ' ').strip.downcase ==
-            responder_hora_en_palabras(ho).downcase
-        end
-      end
-    end
-
     def self.responder_hora_en_palabras(hora)
       "#{comienzo(hora)} #{hora_en_palabras(hora)}"
     end

@@ -1,7 +1,5 @@
 module Respanol
   class Numero
-    include Impresion
-
     UNIDADES = %w( cero uno dos tres cuatro cinco seis siete ocho nueve )
     DECENA = %w( diez once doce trece catorce quince dieciseis diecisiete dieciocho diecinueve )
     DECENAS = %W( #{''} diez viente treinta cuarenta cincuenta sesenta setenta ochenta noventa )
@@ -9,30 +7,10 @@ module Respanol
     UNO_APOCOPE = 'un'
     MILLONS = %W( #{''} millon billon trillon cuatrillon quintillon sextillon septillon octillon nonillon decillon undecillon duodecillon tredecillon cuatordecillon quindecillon sexdecillon septendecillon octodecillon novendecillon vigintillon )
     UNIDAD_1K = 'mil'
-    UNIDAD_1M = 'millon'
     DECIMAL = 'coma'
-    MAXIMO = 100
 
     def self.feminino
       FemininoNumero
-    end
-
-    def self.leer(rango = (1...MAXIMO), conde = nil)
-      Test.gaza(*[conde].compact) do |t|
-        num = rand(rango)
-        t.ensayar("#{numero_en_palabras(num)} = ") do |v|
-          v.to_i == num
-        end
-      end
-    end
-
-    def self.escribir(rango = (1...MAXIMO), conde = nil)
-      Test.gaza(*[conde].compact) do |t|
-        num = rand(rango)
-        t.ensayar("#{num} = ") do |s|
-          s.gsub(/\s+/, ' ').strip == numero_en_palabras(num)
-        end
-      end
     end
 
     def self.unirse_palabras(*ps)
