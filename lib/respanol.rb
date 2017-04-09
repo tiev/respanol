@@ -8,4 +8,4 @@ require 'respanol/traducir'
 require 'respanol/verbos/verbo_base'
 require 'respanol/examenes/examen_base'
 
-Gem.find_files("respanol/**/*.rb").each { |path| require path }
+Dir['./lib/**/*.rb'].each { |file| require file }

@@ -1,8 +1,8 @@
 module Respanol
   module Impresion
     module ClassMethods
-      def prefijo(klase)
-        print "#{klase.name.split('::').last}:: "
+      def prefijo
+        print "#{self.name.split('::').last}:: "
       end
 
       def impresion(*args)
