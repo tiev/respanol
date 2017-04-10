@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/respanol.svg)](https://badge.fury.io/rb/respanol)
+
 # Respanol
 Some ruby scripts to help learning Espanol.
 These scripts are developed while I started studying Spanish.
