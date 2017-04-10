@@ -1,4 +1,6 @@
 [![Gem Version](https://badge.fury.io/rb/respanol.svg)](https://badge.fury.io/rb/respanol)
+[![Test Coverage](https://codeclimate.com/github/tiev/respanol/badges/coverage.svg)](https://codeclimate.com/github/tiev/respanol/coverage)
+[![Code Climate](https://codeclimate.com/github/tiev/respanol/badges/gpa.svg)](https://codeclimate.com/github/tiev/respanol)
 
 # Respanol
 Some ruby scripts to help learning Espanol.
