@@ -108,21 +108,20 @@ You can repeat a test many times to practice more:
 
 `Respanol::Examen::ConjugacionExamen.gaza(<conde>, [<test instance>])`
 
-Method `.gaza` works with all `Respanol::Examen` classes.
+Method gaza works with all Respanol::Examen classes.
 
-  Example: 3 following snippets have the same effect - test conjugation for Poder 5 times
-
+Example: 3 following snippets have the same effect - test conjugation for Poder 5 times.
     ```ruby
     Respanol::Examen::ConjugacionExamen.gaza(5) do |t|
       t.conjugado(Respanol::Verbo::Poder)
     end
     ```
-
+or
     ```ruby
     t = Respanol::Examen::ConjugacionExamen.new(Respanol::Verbo::Poder)
     Respanol::Examen::ConjugacionExamen.gaza(5, t)
     ```
-
+or
     ```ruby
     Respanol::Examen::ConjugacionExamen.new(Respanol::Verbo::Poder).gaza(5)
     ```
