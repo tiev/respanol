@@ -45,7 +45,7 @@ module ::Guard
       end
     end
 
-    def run_on_removals(paths)
+    def run_on_removals(_paths)
       reload
     end
   end

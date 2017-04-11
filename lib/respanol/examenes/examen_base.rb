@@ -20,6 +20,14 @@ module Respanol
         self.class.gaza(conde, self, &Proc.new)
       end
 
+      def self.emparejar?(s1, s2)
+        s2.gsub(/\s+/, ' ').strip.downcase == s2.gsub(/\s+/, ' ').strip.downcase
+      end
+
+      def emparejar?(*args)
+        self.class.emparejar?(*args)
+      end
+
       def ensayar(*args)
         print "> "
         exito = true

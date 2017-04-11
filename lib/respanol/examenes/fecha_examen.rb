@@ -14,7 +14,7 @@ module Respanol
       def escribir(fecha_rango = (Date.civil(1900,1,1)..Date.today))
         fe = rand(fecha_rango)
         ensayar("Fecha #{fe.strftime('%A %Y-%m-%d')}: ") do |v|
-          v.gsub(/\s+/, ' ').strip.downcase == Fecha.fecha_en_palabras(fe).downcase
+          emparejar?(v, Fecha.fecha_en_palabras(fe))
         end
       end
     end

@@ -16,8 +16,7 @@ module Respanol
         fe = Date.today
         ho = Time.local(fe.year, fe.month, fe.day, rand(from..to), rand(0..60), rand(0..60))
         ensayar("#{ho.strftime('%I:%M:%S %p')} = ") do |v|
-          v.gsub(/\s+/, ' ').strip.downcase ==
-            Hora.responder_hora_en_palabras(ho).downcase
+          emparejar?(v, Hora.responder_hora_en_palabras(ho))
         end
       end
     end
