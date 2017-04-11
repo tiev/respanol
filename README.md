@@ -36,44 +36,44 @@ Test reading a random number in a range
 
 `Respanol::Examen::NumeroExamen.new.leer(<rango>)`
 
-  * **rango**: ruby range or maximum (excluded) number. Default: `(1...100)`
+* **rango**: ruby range or maximum (excluded) number. Default: `(1...100)`
 
-  Examples:
-  ```
-  > Respanol::Examen::NumeroExamen.new.leer
-  > cincuenta y tres = 53
-   => Muy bien!
-  > Respanol::Examen::NumeroExamen.new.leer(10)
-  > cinco = 3
-   => No!
-  cinco = 5
-   => Muy bien!
-  ```
+    Examples:
+    ```ruby
+    > Respanol::Examen::NumeroExamen.new.leer
+    > cincuenta y tres = 53
+     => Muy bien!
+    > Respanol::Examen::NumeroExamen.new.leer(10)
+    > cinco = 3
+     => No!
+    cinco = 5
+     => Muy bien!
+    ```
 
 Test writing a random number in a range
 
 `Respanol::Examen::NumeroExamen.new.escribir(<rango>)`
 
-  * **rango**: ruby range or maximum (excluded) number. Default: `(1...100)`
+* **rango**: ruby range or maximum (excluded) number. Default: `(1...100)`
 
-  Examples:
-  ```
-  > Respanol::Examen::NumeroExamen.new.escribir
-  > 64 = sesenta y cuatro
-   => Muy bien!
-  ```
+    Examples:
+    ```ruby
+    > Respanol::Examen::NumeroExamen.new.escribir
+    > 64 = sesenta y cuatro
+     => Muy bien!
+    ```
 
 You can configure the test to use feminine number or default maximum
 
-  ```
-  > Respanol::Examen::NumeroExamen.new.tap { |e| e.feminino!.maximo = 50 }.leer
-  ```
-  is the same as:
-  ```
-  > e = Respanol::Examen::NumeroExamen.new.feminino
-  > e.leer(50)
-  > e.escribir(50)
-  ```
+```ruby
+> Respanol::Examen::NumeroExamen.new.tap { |e| e.feminino!.maximo = 50 }.leer
+```
+is the same as:
+```ruby
+> e = Respanol::Examen::NumeroExamen.new.feminino
+> e.leer(50)
+> e.escribir(50)
+```
 
 ## Verbs Conjugations
 In this version, these exams support present tense only.
@@ -84,17 +84,17 @@ Test verbs conjugations:
 
 `Respanol::Examen::ConjugacionExamen.new.conjugado(<verbos>)`
 
-  * **verbos**: accept a single verb class or an array of verb classes to be tested
+* **verbos**: accept a single verb class or an array of verb classes to be tested
 
-```
-> Respanol::Examen::ConjugacionExamen.new.conjugado(Respanol::Verbo::Poder)
-Poder:: > Tu puedes
- => Muy bien!
-```
+    ```ruby
+    > Respanol::Examen::ConjugacionExamen.new.conjugado(Respanol::Verbo::Poder)
+    Poder:: > Tu puedes
+     => Muy bien!
+    ```
 
 You can configure a default list of verbs:
 
-```
+```ruby
 Respanol::Examen::ConjugacionExamen.new([Respanol::Verbo::Poder, Respanol::Verbo::Tener]).conjugado
 Poder:: > Yo puedo
  => Muy bien!
@@ -111,19 +111,20 @@ You can repeat a test many times to practice more:
 Method `.gaza` works with all `Respanol::Examen` classes.
 
   Example: 3 following snippets have the same effect - test conjugation for Poder 5 times
-  ```
-  Respanol::Examen::ConjugacionExamen.gaza(5) do |t|
-    t.conjugado(Respanol::Verbo::Poder)
-  end
-  ```
 
-  ```
-  t = Respanol::Examen::ConjugacionExamen.new(Respanol::Verbo::Poder)
-  Respanol::Examen::ConjugacionExamen.gaza(5, t)
-  ```
+    ```ruby
+    Respanol::Examen::ConjugacionExamen.gaza(5) do |t|
+      t.conjugado(Respanol::Verbo::Poder)
+    end
+    ```
 
-  ```
-  Respanol::Examen::ConjugacionExamen.new(Respanol::Verbo::Poder).gaza(5)
-  ```
+    ```ruby
+    t = Respanol::Examen::ConjugacionExamen.new(Respanol::Verbo::Poder)
+    Respanol::Examen::ConjugacionExamen.gaza(5, t)
+    ```
+
+    ```ruby
+    Respanol::Examen::ConjugacionExamen.new(Respanol::Verbo::Poder).gaza(5)
+    ```
 
 If no repeat count given to `gaza()`, the default is `50`
