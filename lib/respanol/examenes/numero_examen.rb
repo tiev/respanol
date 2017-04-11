@@ -2,6 +2,7 @@ module Respanol
   module Examen
     class NumeroExamen < ExamenBase
       attr_accessor :klase
+      attr_writer :maximo
 
       MAXIMO = 100
 
@@ -20,7 +21,11 @@ module Respanol
         self
       end
 
-      def leer(rango = (1...MAXIMO))
+      def maximo
+        @maximo || MAXIMO
+      end
+
+      def leer(rango = (1...maximo))
         num = rand(rango)
         ensayar("#{@klase.numero_en_palabras(num)} = ") do |v|
           v.to_i == num

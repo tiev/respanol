@@ -1,15 +1,16 @@
 RSpec.describe Respanol::Impresion do
   before :all do
-    Klase = Class.new.include(Respanol::Impresion)
-    Respanol::KlaseInterna = Class.new.include(Respanol::Impresion)
+    ImpresionKlase = Class.new.include(Respanol::Impresion)
+    Klase = Class.new
+    Respanol::KlaseInterna = Class.new
   end
 
   describe '.prefijo' do
-    it { expect { Klase.prefijo }.to output('Klase:: ').to_stdout }
-    it { expect { Respanol::KlaseInterna.prefijo }.to output('KlaseInterna:: ').to_stdout }
+    it { expect { ImpresionKlase.prefijo(Klase) }.to output('Klase:: ').to_stdout }
+    it { expect { ImpresionKlase.prefijo(Respanol::KlaseInterna) }.to output('KlaseInterna:: ').to_stdout }
   end
 
   describe '.impresion' do
-    it { expect { Klase.impresion('test') }.to output('Klase:: test').to_stdout }
+    it { expect { ImpresionKlase.impresion(Klase, 'test') }.to output('Klase:: test').to_stdout }
   end
 end

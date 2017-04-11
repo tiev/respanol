@@ -10,7 +10,7 @@ module Respanol
         klases = klases | Array(klase) unless klase.nil?
         kl = klases.sample
         pro = Pronombre.todos.sample
-        kl.prefijo
+        prefijo(kl)
         ensayar("#{pro} ") do |v|
           kl::CONJUGACION.find_index(v) == Pronombre.verbo_indice(pro)
         end
