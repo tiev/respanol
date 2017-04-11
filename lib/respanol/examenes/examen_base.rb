@@ -21,7 +21,7 @@ module Respanol
       end
 
       def self.emparejar?(s1, s2)
-        s2.gsub(/\s+/, ' ').strip.downcase == s2.gsub(/\s+/, ' ').strip.downcase
+        s1.gsub(/\s+/, ' ').strip.downcase == s2.gsub(/\s+/, ' ').strip.downcase
       end
 
       def emparejar?(*args)
