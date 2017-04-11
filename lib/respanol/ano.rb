@@ -1,6 +1,6 @@
 module Respanol
   class Ano
-    MESES = %W{ #{''}
+    MESES = %W{ #{}
       Enero Febrero Marzo Abril Mayo Junio
       Julio Agosto Septiembre Octubre Noviembre Diciembre
     }

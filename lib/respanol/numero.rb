@@ -2,10 +2,10 @@ module Respanol
   class Numero
     UNIDADES = %w( cero uno dos tres cuatro cinco seis siete ocho nueve )
     DECENA = %w( diez once doce trece catorce quince dieciseis diecisiete dieciocho diecinueve )
-    DECENAS = %W( #{''} diez viente treinta cuarenta cincuenta sesenta setenta ochenta noventa )
-    CENTENARES = %W( #{''} ciento doscientos trescientos cuatrocientos quinientos seiscientos setecientos ochocientos novecientos )
+    DECENAS = %W( #{} diez viente treinta cuarenta cincuenta sesenta setenta ochenta noventa )
+    CENTENARES = %W( #{} ciento doscientos trescientos cuatrocientos quinientos seiscientos setecientos ochocientos novecientos )
     UNO_APOCOPE = 'un'
-    MILLONS = %W( #{''} millon billon trillon cuatrillon quintillon sextillon septillon octillon nonillon decillon undecillon duodecillon tredecillon cuatordecillon quindecillon sexdecillon septendecillon octodecillon novendecillon vigintillon )
+    MILLONS = %W( #{} millon billon trillon cuatrillon quintillon sextillon septillon octillon nonillon decillon undecillon duodecillon tredecillon cuatordecillon quindecillon sexdecillon septendecillon octodecillon novendecillon vigintillon )
     UNIDAD_1K = 'mil'
     DECIMAL = 'coma'
 
@@ -96,7 +96,7 @@ module Respanol
 
   class FemininoNumero < Numero
     UNIDADES = %w( cero una dos tres cuatro cinco seis siete ocho nueve )
-    CENTENARES = %W( #{''} ciento doscientas trescientas cuatrocientas quinientas seiscientas setecientas ochocientas novecientas )
+    CENTENARES = %W( #{} ciento doscientas trescientas cuatrocientas quinientas seiscientas setecientas ochocientas novecientas )
     UNO_APOCOPE = 'una'
   end
 end
