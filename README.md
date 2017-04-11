@@ -111,19 +111,24 @@ You can repeat a test many times to practice more:
 Method gaza works with all Respanol::Examen classes.
 
 Example: 3 following snippets have the same effect - test conjugation for Poder 5 times.
-    ```ruby
-    Respanol::Examen::ConjugacionExamen.gaza(5) do |t|
-      t.conjugado(Respanol::Verbo::Poder)
-    end
-    ```
+
+  ```ruby
+  Respanol::Examen::ConjugacionExamen.gaza(5) do |t|
+    t.conjugado(Respanol::Verbo::Poder)
+  end
+  ```
+
 or
-    ```ruby
-    t = Respanol::Examen::ConjugacionExamen.new(Respanol::Verbo::Poder)
-    Respanol::Examen::ConjugacionExamen.gaza(5, t)
-    ```
+
+  ```ruby
+  t = Respanol::Examen::ConjugacionExamen.new(Respanol::Verbo::Poder)
+  Respanol::Examen::ConjugacionExamen.gaza(5, t)
+  ```
+
 or
-    ```ruby
-    Respanol::Examen::ConjugacionExamen.new(Respanol::Verbo::Poder).gaza(5)
-    ```
+
+  ```ruby
+  Respanol::Examen::ConjugacionExamen.new(Respanol::Verbo::Poder).gaza(5)
+  ```
 
 If no repeat count given to `gaza()`, the default is `50`
