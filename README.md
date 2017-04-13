@@ -128,7 +128,9 @@ or
 or
 
   ```ruby
-  Respanol::Examen::ConjugacionExamen.new(Respanol::Verbo::Poder).gaza(5)
+  Respanol::Examen::ConjugacionExamen.new(Respanol::Verbo::Poder).gaza(5) do |t|
+    t.conjugado
+  end
   ```
 
 If no repeat count given to `gaza()`, the default is `50`
